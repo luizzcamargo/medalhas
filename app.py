@@ -368,5 +368,11 @@ def update_line(medal_types, country):
     fig.update_layout(legend_title_text='Tipo de Medalha')
     return fig
 
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
+
+def create_app():
+    return app.server
+
 if __name__ == '__main__':
     app.run(debug=True)
