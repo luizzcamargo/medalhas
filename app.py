@@ -4,29 +4,46 @@ import dash
 from dash import dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
 
-# Load the CSV file
+# Lendo o arquivo de csv
 df = pd.read_csv('Summer_olympic_Medals.csv')
-# Replace 'United States' with 'United States of America' in the 'Country_Name' column
+
+# Trocando o nome do país United States para United States da América ("Estados Unidos da América")
 df['Country_Name'] = df['Country_Name'].replace('United States', 'United States of America')
 
-# Filtre os dados entre 1992 e 2020
+# Filtro os dados entre 1992 e 2020
 df = df[(df['Year'] >= 1992) & (df['Year'] <= 2020)]
 
-# Create a Dash Application
+# Cria uma aplicação em dash
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+# Nescessário para deploy no Render
 server = app.server  # Necessary for deployment
 
-# App layout
+# Layout da Aplicação
 app.layout = dbc.Container([
+
+    #Usa o componente html do dash e as classeName do  dash_bootstrap_components
     html.H1("Dashboard Olímpico - Medalhas de 1992 a 2020", className="text-center my-4"),
 
     # Gráfico 1 - Mapa
+
+    ## Usando o Card do dash_bootstrap_components
     dbc.Card([
+        # Cabeçario do dash_bootstrap_components
         dbc.CardHeader("Mapa de Medalhas por País"),
+
+        # corpo do dash_bootstrap_components
         dbc.CardBody([
+            # Linha do dash_bootstrap_components
             dbc.Row([
+
+                # Coluna do dash_bootstrap_components
                 dbc.Col([
+
+                    #Usa o componente html do dash
                     html.Label("Tipo de Medalha:"),
+                    
+                    # Caixa de seleção do dash_bootstrap_components
                     dcc.Dropdown(
                         id='map-medal-type',
                         options=[
