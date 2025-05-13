@@ -143,7 +143,7 @@ app.layout = dbc.Container([
         ])
     ], className="mb-4"),
 
-    # Gráfico 4 - Pizza (updated with country and year filters)
+    # Gráfico 4 - Pizza 
     dbc.Card([
         dbc.CardHeader("Distribuição de Medalhas por Tipo"),
         dbc.CardBody([
@@ -172,7 +172,7 @@ app.layout = dbc.Container([
         ])
     ], className="mb-4"),
 
-    # Gráfico 5 - Linha (updated with multi-medal type selection)
+    # Gráfico 5 - Linha 
     dbc.Card([
         dbc.CardHeader("Evolução das Medalhas por Ano"),
         dbc.CardBody([
@@ -206,7 +206,7 @@ app.layout = dbc.Container([
     ], className="mb-4")
 ], fluid=True)
 
-# Callbacks to update graphs
+# Retornos de chamada para atualizar gráficos
 
 # Gráfico 1 - Mapa
 @app.callback(
@@ -228,14 +228,14 @@ def update_map(medal_type, year):
     df_country_medals = df_filtered.groupby('Country_Name')['Medal_Count'].sum().reset_index()
 
     fig = px.choropleth(
-        df_country_medals,
-        locations='Country_Name',
-        locationmode='country names',
-        color='Medal_Count',
-        hover_name='Country_Name',
-        color_continuous_scale=px.colors.sequential.YlOrRd,
-        title=f'Distribuição de Medalhas {"em " + str(year) if year != "all" else "de 1992 a 2020"}'
-    )
+    df_country_medals,
+    locations='Country_Name',
+    locationmode='country names',
+    color='Medal_Count',
+    hover_name='Country_Name',
+    color_continuous_scale=px.colors.sequential.YlOrRd,
+    title=f'Distribuição de Medalhas <b>{"em " + str(year) if year != "all" else "de 1992 a 2020"}</b>'
+)
     fig.update_layout(margin={"r":0,"t":30,"l":0,"b":0})
     return fig
 
@@ -285,7 +285,7 @@ def update_bar(medal_type, year):
 
     df_top_countries = df_filtered.groupby('Country_Name')['Medal_Count'].sum().nlargest(10).reset_index()
 
-    # Choose appropriate color based on medal type
+    # Cor para a escolha do tipo de medalha
     color_map = {
         'Gold': 'gold',
         'Silver': 'silver',
@@ -302,7 +302,7 @@ def update_bar(medal_type, year):
     )
     return fig
 
-# Gráfico 4 - Pizza (updated callback)
+# Gráfico 4 - Pizza 
 @app.callback(
     Output('pie-chart', 'figure'),
     Input('pie-country', 'value'),
@@ -337,14 +337,14 @@ def update_pie(country, year):
     )
     return fig
 
-# Gráfico 5 - Linha (updated callback)
+# Gráfico 5 - Linha 
 @app.callback(
     Output('line-chart', 'figure'),
     Input('line-medal-type', 'value'),
     Input('line-country', 'value')
 )
 def update_line(medal_types, country):
-    # Prepare data based on selected medal types
+    # Preparar dados com base em tipos de medalhas selecionados
     dfs = []
 
     for medal_type in medal_types:
@@ -364,7 +364,7 @@ def update_line(medal_types, country):
 
     df_line = pd.concat(dfs)
 
-    # Define colors for each medal type
+  # Defina cores para cada tipo de medalha
     color_map = {
         'Gold': 'gold',
         'Silver': 'silver',
