@@ -485,6 +485,9 @@ numpy==1.26.4
 pip>=25.1.1
 ````
 
+````
+web: gunicorn app:server
+````
 
 ## Link do Render
 [Acesse o Link do Render](https://render.com/).
