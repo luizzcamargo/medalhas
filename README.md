@@ -472,7 +472,7 @@ if __name__ == '__main__':
 
 # Importante
 ### Para realizar o deploy no Render, é preciso criar o seu repositorio no Git e subir os arquivos app.py, 
-### que é o arquivo explicado acima e o arquivo "requirements.txt" com as bibliotecas.
+### que é o arquivo explicado acima e os arquivos "requirements.txt" com as bibliotecas e "Procfile" sem nenhuma extensão.
 ### requirements.txt
 
 ````
@@ -484,7 +484,7 @@ gunicorn==21.2.0
 numpy==1.26.4
 pip>=25.1.1
 ````
-
+### Procfile
 ````
 web: gunicorn app:server
 ````
