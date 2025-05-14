@@ -10,14 +10,14 @@ df = pd.read_csv('Summer_olympic_Medals.csv')
 # Trocando o nome do país United States para United States da América ("Estados Unidos da América")
 df['Country_Name'] = df['Country_Name'].replace('United States', 'United States of America')
 
-# Filtro os dados entre 1992 e 2020
+# Filtrando os dados entre 1992 e 2020
 df = df[(df['Year'] >= 1992) & (df['Year'] <= 2020)]
 
 # Cria uma aplicação em dash
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Nescessário para deploy no Render
-server = app.server  # Necessary for deployment
+server = app.server 
 
 # Layout da Aplicação
 app.layout = dbc.Container([
@@ -206,7 +206,7 @@ app.layout = dbc.Container([
     ], className="mb-4")
 ], fluid=True)
 
-# Retornos de chamada para atualizar gráficos
+# Retornos de chamada para atualizar os gráficos
 
 # Gráfico 1 - Mapa
 @app.callback(
@@ -262,7 +262,7 @@ def update_area(medal_type, top_n):
         x="Year",
         y="Medal_Count",
         color="Country_Name",
-        title=f'Top {top_n} Países por medalhas de {medal_type if medal_type != "Total" else "todas as medalhas"}'
+        title=f'<b>Top {top_n} </b>Países por medalhas de {medal_type if medal_type != "Total" else "todas as medalhas"}'
     )
     return fig
 
@@ -298,7 +298,7 @@ def update_bar(medal_type, year):
         x='Country_Name',
         y='Medal_Count',
         color_discrete_sequence=[color_map.get(medal_type, 'gold')],
-        title=f'Top 10 Países com mais medalhas de {medal_type.lower() if medal_type != "Total" else "todas"} {"em " + str(year) if year != "all" else "de 1992 a 2020"}'
+        title=f'Top 10 Países com mais medalhas de <b>{medal_type.lower() if medal_type != "Total" else "todas"} {"em " + str(year) if year != "all" else "de 1992 a 2020"}</b>'
     )
     return fig
 
@@ -309,14 +309,14 @@ def update_bar(medal_type, year):
     Input('pie-year', 'value')
 )
 def update_pie(country, year):
-    # Filter for the selected country
+    # Filtro para selecionar o país
     df_country = df[df['Country_Name'] == country]
 
-    # Filter for the selected year if not 'all'
+    # Filtrar para o ano selecionado se não for 'todos'
     if year != 'all':
         df_country = df_country[df_country['Year'] == year]
 
-    # Prepare data for pie chart (medals by type)
+   # Preparar dados para gráfico de pizza (medalhas por tipo)
     medal_data = {
         'Medal_Type': ['Ouro', 'Prata', 'Bronze'],
         'Count': [
@@ -331,7 +331,7 @@ def update_pie(country, year):
         df_pie,
         names='Medal_Type',
         values='Count',
-        title=f'Distribuição de medalhas por tipo para {country}' + (f' em {year}' if year != 'all' else ' (todos os anos)'),
+        title=f'Distribuição de medalhas por tipo para <b>{country}' + (f' em {year}' if year != 'all' else ' (todos os anos)</b>'),
         color='Medal_Type',
         color_discrete_map={'Ouro': 'gold', 'Prata': 'silver', 'Bronze': 'peru'}
     )
@@ -376,7 +376,7 @@ def update_line(medal_types, country):
         x='Year',
         y='Medal_Count',
         color='Medal_Type',
-        title=f'Evolução de medalhas para {"todos países" if country == "all" else country}',
+        title=f'Evolução de medalhas para <b> {"todos países" if country == "all" else country}</b>',
         markers=True,
         color_discrete_map=color_map
     )
