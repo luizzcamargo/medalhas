@@ -456,7 +456,7 @@ if __name__ == '__main__':
 ````
 ### Representação do Gráfico de Mapa
 
-![Gráfico de Mapa.](https://raw.githubusercontent.com/luizzcamargo/img/refs/heads/main/grafico_de_mapa.png "Gráfico de Mapa.")
+![Gráfico de Mapa.](https://raw.githubusercontent.com/luizzcamargo/img/d0a58656e1a4f0f2da628152762dd5b7dc67f7db/grafico_de_mapa.png "Gráfico de Mapa.")
 
 ### Representação do Gráfico de Area
 ![Gráfico de Area.](https://raw.githubusercontent.com/luizzcamargo/img/refs/heads/main/grafico_de_area.png "Gráfico de Area.")
