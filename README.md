@@ -224,7 +224,7 @@ html.H1("Dashboard Olímpico - Medalhas de 1992 a 2020", className="text-center 
 
 
 ## Gráfico de Linha
-### Montando o Quinto card para o gráfico de Linhas que também tem dois filtros, um para escolher o país e outro para o escolher o ano olimpico e retorna a quantidade de cada medalha que o país conquistou por ano o em todas as olimpíadas de 1992 a 2020. 
+### Montando o Quinto card para o gráfico de Linhas que também tem dois filtros, um para escolher o país e outro para o escolher o ano olimpico e retorna a evolução de cada medalha que o país conquistou por ano o em todas as olimpíadas de 1992 a 2020. 
 ````    
       dbc.Card([
         dbc.CardHeader("Evolução das Medalhas por Ano"),
