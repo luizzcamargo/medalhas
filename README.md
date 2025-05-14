@@ -471,10 +471,9 @@ if __name__ == '__main__':
 ![Gráfico de Linha.](https://raw.githubusercontent.com/luizzcamargo/img/refs/heads/main/grafico_de_linhas.png "Gráfico de Linha.")
 
 # Importante
-### Para realizar o deploy no Render, é preciso criar o seu repositorio no Git e subir os arquivos app.py, 
-### que é o arquivo explicado acima e os arquivos "requirements.txt" com as bibliotecas e "Procfile" sem nenhuma extensão.
-### requirements.txt
+### Para realizar o deploy no Render, é preciso criar o seu repositorio no Git e subir os arquivos app.py, que é o arquivo explicado acima, e os arquivos "requirements.txt" com as bibliotecas e "Procfile" sem nenhuma extensão.
 
+### requirements.txt
 ````
 dash==2.14.2
 pandas==2.2.1
