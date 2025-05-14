@@ -113,7 +113,7 @@ html.H1("Dashboard Olímpico - Medalhas de 1992 a 2020", className="text-center 
 
 
 ## Gráfico de Area
-### Montando o Segundo card para o gráfico de Area que também tem dois filtros, um para escolher o tipo de medalha e outro para o rankear os países mais vencedores. 
+### Montando o Segundo card para o gráfico de Area que também tem dois filtros, um para escolher o tipo de medalha e outro para rankear os países mais vencedores. 
     
     dbc.Card([
         dbc.CardHeader("Top Países por Medalhas"),
